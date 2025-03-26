@@ -25,5 +25,13 @@ public class DataManager{
         fileaccess.publish(s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+"\n"); 
     }
 
+    public List<String> allTitles(){
+        List<String> titles = new List<String>(); 
+        foreach(Source a in allSources){
+            titles.Add(a.getTitle());
+        }
+        return titles; 
+    }
+
 
 }
