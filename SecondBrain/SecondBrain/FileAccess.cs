@@ -6,12 +6,13 @@ public class FileAccess{
     public FileAccess(string f){
         fileName = f; 
        
-        if (File.Exists(fileName)){
-            Console.WriteLine("File exists. Loading data");
+        if (!File.Exists(fileName)){
+            //Console.WriteLine("Creating new file. First use.");
+            File.Create(fileName); 
         }
         else{
-            Console.WriteLine("Creating new file. First use.");
-            File.Create(fileName); 
+            //Console.WriteLine("File exists. Loading data");
+
         }
     }
 
@@ -26,6 +27,7 @@ public class FileAccess{
         {
             var line = reader.ReadLine();
             var values = line.Split(',');
+            //refactor the below line of code for different data types eventually - write a polymorphic method
             Source temp = new Source(values[0], values[1], values[2], double.Parse(values[3]));
             allData.Add(temp);
         }
