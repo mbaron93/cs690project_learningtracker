@@ -9,7 +9,7 @@ class Program
 
     static void Main(string[] args)
     {
-        DataManager dm = new DataManager("StoredInfo.csv");
+        DataManager dm = new DataManager("Sources.csv");
         string[] options = new String[] {
             "Add a source", "Edit a source", "Set a Goal", "View Learning Data", "Exit"};
         UI u = new UI(options, dm); 
