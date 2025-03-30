@@ -32,6 +32,36 @@ public class DataManager{
         }
         return titles; 
     }
+    public void removeSource(string sourceName){
+        for(int i = 0; i<allSources.Count; i++){
+            Source s = allSources[i];
+            if(string.Equals(sourceName, s.getTitle())){
+                fileaccess.editFile("\n", i );
+                allSources.Remove(s); 
+            }
+        }
+        
+    }
+
+    public void editSource(Source given){
+        for(int i = 0; i<allSources.Count; i++){
+            Source s = allSources[i];
+            if(string.Equals(given.getTitle(), s.getTitle())){
+                fileaccess.editFile(given.getAuthor()+","+given.getTitle()+","+given.getNotes()+","+given.getAmount()+"\n", i);
+            }
+        }
+        
+    }
+
+    public Source getSourceByTitle(string sourceName){
+        for(int i = 0; i<allSources.Count; i++){
+            Source s = allSources[i];
+            if(string.Equals(sourceName, s.getTitle())){
+                return s; 
+            }
+        }
+        return null; 
+    }
 
 
 }

@@ -52,4 +52,10 @@ public class Source{
    public DateTime getStart(){
       return started; 
    }
+   public void setNote(string note){
+      this.notes = note; 
+   }
+   public void setAmount(double amount){
+      this.amount=amount; 
+   }
 }

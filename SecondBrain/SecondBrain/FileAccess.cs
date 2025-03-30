@@ -40,4 +40,10 @@ public class FileAccess{
     public string getFileName(){
         return fileName; 
     }
+
+    public void editFile(string newText, int line_to_edit){
+        string[] arrLine = File.ReadAllLines(this.fileName);
+        arrLine[line_to_edit] = newText;
+        File.WriteAllLines(this.fileName, arrLine);
+    }
 }
