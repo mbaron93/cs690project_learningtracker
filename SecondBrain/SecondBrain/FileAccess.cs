@@ -20,6 +20,11 @@ public class FileAccess{
         File.AppendAllText(fileName, value);
     }
 
+    public string getLine(int i){
+        string[] arrLine = File.ReadAllLines(this.fileName);
+        return arrLine[i];
+    }
+
    public List<Source> loadExistingSources(){
        List<Source> allData = new List<Source>(); 
        using(var reader = new StreamReader(fileName)){
@@ -45,5 +50,10 @@ public class FileAccess{
         string[] arrLine = File.ReadAllLines(this.fileName);
         arrLine[line_to_edit] = newText;
         File.WriteAllLines(this.fileName, arrLine);
+    }
+
+    public int getLastLineNumber(){
+        string[] arrLine = File.ReadAllLines(this.fileName);
+        return arrLine.Length-1;
     }
 }
