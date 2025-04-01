@@ -25,6 +25,7 @@ jobs:
       working-directory: ./SecondBrain
     - name: Build
       run: dotnet build --no-restore
+      working-directory: ./SecondBrain
     - name: Test
       run: dotnet test --no-build --verbosity normal
       working-directory: ./SecondBrain
