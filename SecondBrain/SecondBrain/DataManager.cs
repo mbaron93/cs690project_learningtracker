@@ -20,11 +20,13 @@ public class DataManager{
         }
     }
 
+    //unit test written
     public void addNewSource(Source s){
         allSources.Add(s);
         fileaccess.publish(s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+"\n"); 
     }
 
+    //unit test written
     public List<String> allTitles(){
         List<String> titles = new List<String>(); 
         foreach(Source a in allSources){
@@ -32,17 +34,22 @@ public class DataManager{
         }
         return titles; 
     }
-    public void removeSource(string sourceName){
+
+    //unit test written
+    public bool removeSource(string sourceName){
         for(int i = 0; i<allSources.Count; i++){
             Source s = allSources[i];
             if(string.Equals(sourceName, s.getTitle())){
                 fileaccess.editFile("\n", i );
                 allSources.Remove(s); 
+                return true;
             }
         }
+        return false; 
         
     }
 
+    //unit test written
     public void editSource(Source given){
         for(int i = 0; i<allSources.Count; i++){
             Source s = allSources[i];
@@ -53,6 +60,7 @@ public class DataManager{
         
     }
 
+    //unit test written
     public Source getSourceByTitle(string sourceName){
         for(int i = 0; i<allSources.Count; i++){
             Source s = allSources[i];

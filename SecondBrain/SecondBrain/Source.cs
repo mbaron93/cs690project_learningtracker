@@ -52,6 +52,12 @@ public class Source{
    public DateTime getStart(){
       return started; 
    }
+   public bool Equals(Source s){
+      if(string.Equals(this.author, s.getAuthor()) && string.Equals(this.title, s.getTitle())){
+         return true; 
+      }
+      return false; 
+   }
    public void setNote(string note){
       this.notes = note; 
    }
