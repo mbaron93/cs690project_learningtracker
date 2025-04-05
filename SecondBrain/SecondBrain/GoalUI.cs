@@ -4,7 +4,6 @@ using System.IO;
 using Spectre.Console; 
 
 public class GoalUI{
-    DataManager dm; 
     GoalManager gm; 
     string[] goalOptions = {"Add a New Goal", "Edit existing goals", "Return to Home"};
 

@@ -46,7 +46,7 @@ public class UI{
             GoalUI goalui = new GoalUI(gm);
          }
          if(choice == options[3]){
-            ReportUI reportUI = new ReportUI(dm); 
+            ReportUI reportUI = new ReportUI(dm,gm); 
          }
          if(choice != options[4]){
             this.home(); 

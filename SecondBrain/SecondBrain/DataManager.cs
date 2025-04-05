@@ -4,6 +4,7 @@ public class DataManager{
     private List<Source> allSources; 
     private string fileName; 
     private FileAccess fileaccess; 
+    private int goalNumSources = 100; 
 
     //default constructor for testing
     public DataManager(){
@@ -17,6 +18,13 @@ public class DataManager{
         allSources = fileaccess.loadExistingSources(); 
     }
 
+    public void setGoalNumSources(int goalNumSources){
+        this.goalNumSources=goalNumSources; 
+    }
+
+    public int getGoalNumSources(){
+        return goalNumSources; 
+    }
     public void printAllSources(){
         int source = 0; 
         foreach(Source a in allSources){

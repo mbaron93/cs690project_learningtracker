@@ -40,6 +40,16 @@ public class GoalManager{
         return allDescs; 
     }
 
+    public List<String> incompleteGoals(){
+        List<String> allDescs = new List<String>(); 
+        foreach(Goal g in allGoals){
+            if(!g.getCompleted()){
+                allDescs.Add(g.toString());
+            }
+        }
+        return allDescs; 
+    }
+
     public void editGoal(Goal given){
         for(int i = 0; i<allGoals.Count; i++){
             Goal g = allGoals[i];
