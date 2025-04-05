@@ -5,6 +5,12 @@ public class DataManager{
     private string fileName; 
     private FileAccess fileaccess; 
 
+    //default constructor for testing
+    public DataManager(){
+        fileName="default.csv";
+        fileaccess = null; 
+        allSources = new List<Source>(); 
+    }
     public DataManager(string f){
         fileName = f; 
         fileaccess = new FileAccess(fileName);

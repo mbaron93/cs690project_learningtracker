@@ -14,7 +14,7 @@ public class UI{
       public UI(String[] options, DataManager dm){
         this.options = options; 
         this.dm = dm; 
-        this.home(); 
+        //this.home(); 
       }
 
       public string[] getOptions(){
