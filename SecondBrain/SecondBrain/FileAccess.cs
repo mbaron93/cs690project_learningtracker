@@ -20,6 +20,7 @@ public class FileAccess{
         File.AppendAllText(fileName, value);
     }
 
+
     public string getLine(int i){
         string[] arrLine = File.ReadAllLines(this.fileName);
         return arrLine[i];
@@ -42,6 +43,25 @@ public class FileAccess{
        return allData; 
     }
 
+    public List<Goal> loadExistingGoals(){
+           List<Goal> allGoals= new List<Goal>(); 
+       using(var reader = new StreamReader(fileName)){
+        while (!reader.EndOfStream)
+        {
+            var line = reader.ReadLine();
+            var values = line.Split(',');
+            //refactor the below line of code for different data types eventually - write a polymorphic method
+            if(values.Length == 4){
+                string[] begin = values[2].Split("/");
+                string[] end = values[3].Split("/");
+                Goal temp = new Goal(values[0], bool.Parse(values[1]), new DateTime(int.Parse(begin[0]),int.Parse(begin[1]), int.Parse(begin[2])), new DateTime(int.Parse(end[0]), int.Parse(end[1]),int.Parse(end[2])));
+                allGoals.Add(temp);
+            }
+        }
+       }
+       return allGoals; 
+    }
+
     public string getFileName(){
         return fileName; 
     }
@@ -56,4 +76,5 @@ public class FileAccess{
         string[] arrLine = File.ReadAllLines(this.fileName);
         return arrLine.Length-1;
     }
+
 }
