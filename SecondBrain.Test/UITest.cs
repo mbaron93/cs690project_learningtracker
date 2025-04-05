@@ -15,4 +15,12 @@ public class UITest{
         Assert.Equal(options, ui.getOptions());
     }
 
+    [Fact]
+    public void TestSetOptions()
+    {
+        String[] options2 = new String[]{"Choose a source", "Add an option"};
+        ui.setOptions(options2);
+        Assert.Equal(options2, ui.getOptions());
+    }
+
 }

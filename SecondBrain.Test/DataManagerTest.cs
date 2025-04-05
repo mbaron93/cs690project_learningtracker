@@ -23,6 +23,12 @@ public class DataManagerTest{
     }
 
     [Fact]
+    public void TestRemoveAllSources(){
+       dm.removeAllSources(); 
+       Assert.Equal(dm.allTitles().Count, 0);
+    }
+
+    [Fact]
     public void TestEditSource(){
         Source temp = new Source("Boiling", "Boyle", "It was steamy", 40); 
         dm.addNewSource(temp);
@@ -35,12 +41,12 @@ public class DataManagerTest{
     [Fact]
     public void TestAllTitles(){
         DataManager allTitleTester = new DataManager("TitleTester.csv"); 
+        allTitleTester.removeAllSources(); 
         Source temp = new Source("Gilead","Robinson", "It was great", 100); 
         allTitleTester.addNewSource(temp);
         List<String> titles = allTitleTester.allTitles();
         List<String> checkList = new List<String>(); 
         checkList.Add(temp.getTitle());
         Assert.Equal(titles,checkList );
-        allTitleTester.removeAllSources(); 
     }
 }

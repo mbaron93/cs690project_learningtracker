@@ -59,6 +59,7 @@ public class DataManager{
          for(int i = 0; i<allSources.Count; i++){
             fileaccess.editFile("\n",i);
          }
+         allSources = new List<Source>(); 
     }
 
     //unit test written
