@@ -49,6 +49,12 @@ public class DataManager{
         
     }
 
+    public void removeAllSources(){
+         for(int i = 0; i<allSources.Count; i++){
+            fileaccess.editFile("\n",i);
+         }
+    }
+
     //unit test written
     public void editSource(Source given){
         for(int i = 0; i<allSources.Count; i++){
