@@ -10,10 +10,12 @@ public class UI{
   //dynamically update different pages over time depending on the class. 
       private string[] options; 
       DataManager dm; 
+      GoalManager gm; 
 
-      public UI(String[] options, DataManager dm){
+      public UI(String[] options, DataManager dm, GoalManager gm){
         this.options = options; 
         this.dm = dm; 
+        this.gm=gm; 
         //this.home(); 
       }
 
@@ -41,7 +43,7 @@ public class UI{
             EditUI editui = new EditUI(dm); 
          }
          if(choice == options[2]){
-            GoalUI goalui = new GoalUI(dm);
+            GoalUI goalui = new GoalUI(gm);
          }
          if(choice == options[3]){
             ReportUI reportUI = new ReportUI(dm); 
