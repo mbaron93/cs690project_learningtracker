@@ -25,6 +25,14 @@ public class DataManager{
     public int getGoalNumSources(){
         return goalNumSources; 
     }
+
+    public string toCSV(Source s){
+      String str = s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+","; 
+      DateTime start = s.getStart(); 
+      str+=start.Year+"/"+start.Month+"/"+start.Day+"\n"; 
+      return str; 
+    }
+
     public void printAllSources(){
         int source = 0; 
         foreach(Source a in allSources){
@@ -37,7 +45,7 @@ public class DataManager{
     //unit test written
     public void addNewSource(Source s){
         allSources.Add(s);
-        fileaccess.publish(s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+"\n"); 
+        fileaccess.publish(toCSV(s)); 
     }
 
     //unit test written
@@ -75,7 +83,7 @@ public class DataManager{
         for(int i = 0; i<allSources.Count; i++){
             Source s = allSources[i];
             if(string.Equals(given.getTitle(), s.getTitle())){
-                fileaccess.editFile(given.getAuthor()+","+given.getTitle()+","+given.getNotes()+","+given.getAmount()+"\n", i);
+                fileaccess.editFile(toCSV(given), i);
             }
         }
         
