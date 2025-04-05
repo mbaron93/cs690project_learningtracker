@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecondBrain.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec1b4cf49d6a03b7765505da9521df2cd1622c3a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50a5116788e3d79dd943be3a1cb8975812cbf244")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecondBrain.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecondBrain.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

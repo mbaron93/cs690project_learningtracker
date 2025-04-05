@@ -23,4 +23,10 @@ public class UITest{
         Assert.Equal(options2, ui.getOptions());
     }
 
+    /*Return to test if I can get this up and running
+    [Fact]
+    public void TestHome(){
+        Assert.Equal(ui.home(), true);
+    }
+    */
 }
