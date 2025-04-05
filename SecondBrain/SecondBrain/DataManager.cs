@@ -5,6 +5,12 @@ public class DataManager{
     private string fileName; 
     private FileAccess fileaccess; 
 
+    //default constructor for testing
+    public DataManager(){
+        fileName="default.csv";
+        fileaccess = null; 
+        allSources = new List<Source>(); 
+    }
     public DataManager(string f){
         fileName = f; 
         fileaccess = new FileAccess(fileName);
@@ -53,6 +59,7 @@ public class DataManager{
          for(int i = 0; i<allSources.Count; i++){
             fileaccess.editFile("\n",i);
          }
+         allSources = new List<Source>(); 
     }
 
     //unit test written

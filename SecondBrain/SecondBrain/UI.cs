@@ -14,7 +14,7 @@ public class UI{
       public UI(String[] options, DataManager dm){
         this.options = options; 
         this.dm = dm; 
-        this.home(); 
+        //this.home(); 
       }
 
       public string[] getOptions(){
@@ -25,7 +25,7 @@ public class UI{
          this.options=options; 
       }
 
-      public void home(){
+      public bool home(){
        var choice = AnsiConsole.Prompt(
     new SelectionPrompt<string>()
         .Title("What do you want to do?")
@@ -49,6 +49,7 @@ public class UI{
          if(choice != options[4]){
             this.home(); 
          }
+         return true; 
       }
      
 }
