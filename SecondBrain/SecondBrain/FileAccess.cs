@@ -34,8 +34,10 @@ public class FileAccess{
             var line = reader.ReadLine();
             var values = line.Split(',');
             //refactor the below line of code for different data types eventually - write a polymorphic method
-            if(values.Length == 4){
-                Source temp = new Source(values[0], values[1], values[2], double.Parse(values[3]));
+            if(values.Length == 5){
+                string[] begin= values[4].Split("/");
+                DateTime beginDate = new DateTime(int.Parse(begin[0]),int.Parse(begin[1]), int.Parse(begin[2]));
+                Source temp = new Source(values[0], values[1], values[2], double.Parse(values[3]),beginDate);
                 allData.Add(temp);
             }
         }
@@ -67,7 +69,12 @@ public class FileAccess{
     }
 
     public void editFile(string newText, int line_to_edit){
-        string[] arrLine = File.ReadAllLines(this.fileName);
+        List<string> arrLine = new List<String>(File.ReadAllLines(this.fileName));
+        for(int index = 0; index<arrLine.Count; index++){
+            if(string.IsNullOrWhiteSpace(arrLine[index])){
+                arrLine.Remove(arrLine[index]);
+            }
+        }
         arrLine[line_to_edit] = newText;
         File.WriteAllLines(this.fileName, arrLine);
     }

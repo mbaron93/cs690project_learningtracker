@@ -1,9 +1,13 @@
 namespace SecondBrain; 
 
+using System.IO; 
+using Spectre.Console; 
+
 public class DataManager{
     private List<Source> allSources; 
     private string fileName; 
     private FileAccess fileaccess; 
+    private int goalNumSources = 100; 
 
     //default constructor for testing
     public DataManager(){
@@ -17,19 +21,40 @@ public class DataManager{
         allSources = fileaccess.loadExistingSources(); 
     }
 
-    public void printAllSources(){
-        int source = 0; 
-        foreach(Source a in allSources){
-            source++; 
-            Console.WriteLine("Source #"+source+":");
-            Console.WriteLine(a.toString());
-        }
+    public void setGoalNumSources(int goalNumSources){
+        this.goalNumSources=goalNumSources; 
     }
+
+    public int getGoalNumSources(){
+        return goalNumSources; 
+    }
+
+    public string toCSV(Source s){
+      String str = s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+","; 
+      DateTime start = s.getStart(); 
+      str+=start.Year+"/"+start.Month+"/"+start.Day+"\n"; 
+      return str; 
+    }
+
+    public void printAllSources(){
+         var table = new Table(); 
+         table.AddColumn("Title");
+         table.AddColumn("Author");
+         table.AddColumn("Percent Complete");
+         table.AddColumn("Started On");
+        foreach(Source a in allSources){
+            DateTime dt = a.getStart(); 
+            table.AddRow(new string[]{a.getTitle(), a.getAuthor(), ""+a.getAmount(),""+dt.Month + "/"+dt.Day + "/"+dt.Year});
+        }
+        AnsiConsole.Write(table);
+
+    }
+
 
     //unit test written
     public void addNewSource(Source s){
         allSources.Add(s);
-        fileaccess.publish(s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+"\n"); 
+        fileaccess.publish(toCSV(s)); 
     }
 
     //unit test written
@@ -46,7 +71,7 @@ public class DataManager{
         for(int i = 0; i<allSources.Count; i++){
             Source s = allSources[i];
             if(string.Equals(sourceName, s.getTitle())){
-                fileaccess.editFile("\n", i );
+                fileaccess.editFile("", i );
                 allSources.Remove(s); 
                 return true;
             }
@@ -67,7 +92,7 @@ public class DataManager{
         for(int i = 0; i<allSources.Count; i++){
             Source s = allSources[i];
             if(string.Equals(given.getTitle(), s.getTitle())){
-                fileaccess.editFile(given.getAuthor()+","+given.getTitle()+","+given.getNotes()+","+given.getAmount()+"\n", i);
+                fileaccess.editFile(toCSV(given), i);
             }
         }
         
