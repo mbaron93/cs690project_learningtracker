@@ -40,11 +40,11 @@ public class GoalManager{
         return allDescs; 
     }
 
-    public List<String> incompleteGoals(){
-        List<String> allDescs = new List<String>(); 
+    public List<Goal> incompleteGoals(){
+        List<Goal> allDescs = new List<Goal>(); 
         foreach(Goal g in allGoals){
             if(!g.getCompleted()){
-                allDescs.Add(g.toString());
+                allDescs.Add(g);
             }
         }
         return allDescs; 

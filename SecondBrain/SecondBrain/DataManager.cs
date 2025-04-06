@@ -1,5 +1,8 @@
 namespace SecondBrain; 
 
+using System.IO; 
+using Spectre.Console; 
+
 public class DataManager{
     private List<Source> allSources; 
     private string fileName; 
@@ -34,13 +37,19 @@ public class DataManager{
     }
 
     public void printAllSources(){
-        int source = 0; 
+         var table = new Table(); 
+         table.AddColumn("Title");
+         table.AddColumn("Author");
+         table.AddColumn("Percent Complete");
+         table.AddColumn("Started On");
         foreach(Source a in allSources){
-            source++; 
-            Console.WriteLine("Source #"+source+":");
-            Console.WriteLine(a.toString());
+            DateTime dt = a.getStart(); 
+            table.AddRow(new string[]{a.getTitle(), a.getAuthor(), ""+a.getAmount(),""+dt.Month + "/"+dt.Day + "/"+dt.Year});
         }
+        AnsiConsole.Write(table);
+
     }
+
 
     //unit test written
     public void addNewSource(Source s){

@@ -39,22 +39,31 @@ public class ReportUI{
         
     }
 
+    public void printGoals(List<Goal> goals){
+         var table = new Table(); 
+         table.AddColumn("Goal Name");
+         table.AddColumn("Completed");
+         table.AddColumn("Complete By");
+        foreach(Goal a in goals){
+            DateTime dt = a.getCompleteBy(); 
+            table.AddRow(new string[]{a.getDesc(), ""+a.getCompleted(),""+dt.Month + "/"+dt.Day + "/"+dt.Year});
+        }
+        AnsiConsole.Write(table);
+
+    }
+
     public void reportAllGoals(){
         Console.WriteLine("Here are all of your goals"); 
-        List<String> allGoals = gm.getAllGoalDescs(); 
-        foreach(string g in allGoals){
-            Console.WriteLine(g);
-        }
+        List<Goal> allGoals = gm.getAllGoals(); 
+        printGoals(allGoals);
     }
 
     public void reportGoalProgress(){
         double percGoalsComplete = gm.fractionGoalsComplete()*100.0; 
         Console.WriteLine("You have completed "+percGoalsComplete+ "% of your learning goals!");
         Console.WriteLine("Here are some goals you could work on to better yourself!"); 
-        List<string> allGoals = gm.incompleteGoals(); 
-        foreach(string g in allGoals){
-            Console.WriteLine(g);
-        }
+        List<Goal> incGoals = gm.incompleteGoals(); 
+        printGoals(incGoals);
     }
 
     public void summarize(){

@@ -18,7 +18,7 @@ public class AddUI{
             new SelectionPrompt<string>()
             .Title("Is this a book or an article?")
             .PageSize(10)
-            .AddChoices("Book", "Article"));
+            .AddChoices("Book", "Article", "Back to Home"));
 
 
         //The Author, title and notes are stored here now
@@ -35,7 +35,12 @@ public class AddUI{
         //For articles, check the percent of the article that has been read
         if(sourceType == "Article"){
             Console.WriteLine("What percent of the article have you read? Enter a value between 0 and 100");
+            try{
             amount = double.Parse(Console.ReadLine());
+            }catch(FormatException f){
+                Console.WriteLine("Re-enter a number please");
+                amount = double.Parse(Console.ReadLine());
+            }
             while(amount< 0 || amount >100.0){
                 Console.WriteLine("You didn't enter an amount between 0 and 100.0. Please try again on the percent of the article you completed.");
                 amount = double.Parse(Console.ReadLine());
