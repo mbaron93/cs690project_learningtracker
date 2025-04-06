@@ -13,7 +13,7 @@ public class GoalUI{
     }
 
     public void start(){
-        
+        Console.Clear(); 
         Console.WriteLine("Add a Goal Page.:");
          var sourceType = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
@@ -29,17 +29,17 @@ public class GoalUI{
     }
 
     public void addGoal(){
+        Console.Clear(); 
         Console.WriteLine("What is your goal?");
         String goalDesc = Console.ReadLine();
 
         DateTime completeBy = this.getDateFromUser(); 
-
         Goal temp = new Goal(goalDesc, completeBy);
         gm.addGoal(temp);
     }
 
     public void editGoal(){
-
+        Console.Clear(); 
          Console.WriteLine("Edit Goal");
          var goalChoice = AnsiConsole.Prompt(
             new SelectionPrompt<string>()

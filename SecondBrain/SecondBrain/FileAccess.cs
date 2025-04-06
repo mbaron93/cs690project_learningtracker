@@ -69,7 +69,12 @@ public class FileAccess{
     }
 
     public void editFile(string newText, int line_to_edit){
-        string[] arrLine = File.ReadAllLines(this.fileName);
+        List<string> arrLine = new List<String>(File.ReadAllLines(this.fileName));
+        for(int index = 0; index<arrLine.Count; index++){
+            if(string.IsNullOrWhiteSpace(arrLine[index])){
+                arrLine.Remove(arrLine[index]);
+            }
+        }
         arrLine[line_to_edit] = newText;
         File.WriteAllLines(this.fileName, arrLine);
     }

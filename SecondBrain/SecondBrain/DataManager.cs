@@ -62,7 +62,7 @@ public class DataManager{
         for(int i = 0; i<allSources.Count; i++){
             Source s = allSources[i];
             if(string.Equals(sourceName, s.getTitle())){
-                fileaccess.editFile("\n", i );
+                fileaccess.editFile("", i );
                 allSources.Remove(s); 
                 return true;
             }

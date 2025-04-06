@@ -12,6 +12,7 @@ public class EditUI{
     }
 
     public void start(){
+        Console.Clear(); 
         Console.WriteLine("Edit a Source Page");
         List<string> allTitles = dm.allTitles();
         allTitles.Add("Go back to home");
@@ -21,7 +22,7 @@ public class EditUI{
             .PageSize(10)
             .AddChoices(allTitles));
 
-
+        Console.Clear(); 
         if(!string.Equals(sourceName, "Go back to home")){
         var editOrRemove = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
@@ -41,12 +42,12 @@ public class EditUI{
     public void edit(string sourceName){
         //find current source in Database
         Source s = dm.getSourceByTitle(sourceName);
+        Console.Clear(); 
 
         //prompt whihc parts to change dynamically
-        Console.WriteLine("Would you like to change your note?");
          string noteChange = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
-            .Title("Which source will you change?")
+            .Title("Would you like to change your note?")
             .PageSize(10)
             .AddChoices(new [] {"Yes", "No"}));
         if(string.Equals("Yes",noteChange)){
@@ -57,13 +58,14 @@ public class EditUI{
         }
 
         //prompt ot update progress change
-         Console.WriteLine("Would you like to update your progress?");
+        Console.Clear(); 
          string progressChange = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
-            .Title("Which source will you change?")
+            .Title("Would you like to update your progress?")
             .PageSize(10)
             .AddChoices(new [] {"Yes", "No"}));
         if(string.Equals("Yes",progressChange)){
+            Console.Clear(); 
             //if change, update amount completed
            Console.WriteLine("What percent have you completed? Enter a value between 0 and 100");
             double amount = double.Parse(Console.ReadLine());
@@ -79,6 +81,7 @@ public class EditUI{
 
     }
     public void remove(string sourceName){
+        Console.Clear(); 
         dm.removeSource(sourceName);
         Console.WriteLine(sourceName + "removed");
     }
