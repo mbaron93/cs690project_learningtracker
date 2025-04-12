@@ -54,6 +54,7 @@ public class EditUI{
             //if changed, update note value
             Console.WriteLine("Enter your new note");
             string note = Console.ReadLine(); 
+            note = UI.validateInfo(note);
             s.setNote(note);
         }
 
@@ -67,12 +68,7 @@ public class EditUI{
         if(string.Equals("Yes",progressChange)){
             Console.Clear(); 
             //if change, update amount completed
-           Console.WriteLine("What percent have you completed? Enter a value between 0 and 100");
-            double amount = double.Parse(Console.ReadLine());
-            while(amount< 0 || amount >100.0){
-                Console.WriteLine("You didn't enter an amount between 0 and 100.0. Please try again on the percent of the article you completed.");
-                amount = double.Parse(Console.ReadLine());
-            }
+            double amount = AddUI.validateArticleAmount(); 
             s.setAmount(amount);
         }
 
