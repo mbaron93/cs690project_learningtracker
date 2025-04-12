@@ -3,12 +3,14 @@ namespace SecondBrain.Test;
 public class FileAccessTest
 {
     FileAccess fm; 
+    FileAccess fmGoals; 
     String testString = "hey, another, test, 30"; 
     int nextLineInt; 
 
     
     public FileAccessTest(){
         fm = new FileAccess("TestFile.csv");
+        fmGoals = new FileAccess("TestGoals.csv");
     }
 
   
@@ -48,6 +50,11 @@ public class FileAccessTest
             Assert.Equal(index, allSources[index].getAmount());
         }
 
+    }
+
+    [Fact]
+    public void TestLoadGoals(){
+        Assert.Equal(fmGoals.loadExistingGoals().Count, 3);
     }
 
 }
