@@ -43,7 +43,7 @@ public class UI{
             EditUI editui = new EditUI(dm); 
          }
          if(choice == options[2]){
-            GoalUI goalui = new GoalUI(gm);
+            GoalUI goalui = new GoalUI(gm, dm);
          }
          if(choice == options[3]){
             ReportUI reportUI = new ReportUI(dm,gm); 
@@ -54,6 +54,13 @@ public class UI{
          return true; 
       }
      
+     public static String validateInfo(string input){
+        while(string.Equals(input, "")){
+           Console.WriteLine("Re-enter information that is not blank.");
+           input= Console.ReadLine(); 
+        }
+        return input;
+    }
 }
 
 
