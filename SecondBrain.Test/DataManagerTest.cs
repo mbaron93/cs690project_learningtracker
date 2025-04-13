@@ -49,8 +49,8 @@ public class DataManagerTest{
         List<String> titles = allTitleTester.allTitles();
         List<String> checkList = new List<String>(); 
         checkList.Add(temp.getTitle());
-        Assert.Equal(titles,checkList );
         dm.removeSource("Gilead");
+        Assert.Equal(titles,checkList );
     }
 
     [Fact]

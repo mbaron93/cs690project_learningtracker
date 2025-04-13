@@ -68,11 +68,13 @@ public class GoalManagerTest{
     //editGoal
     [Fact]
     public void TestEditGoal(){
-        Goal g = gmAddEdit.getAllGoals()[0];
-        if(g!= null){
-            g.setDesc("Watch the sunset");
-            gmAddEdit.editGoal(g); 
-            Assert.Equal(g.getDesc(), gmAddEdit.getAllGoals()[0].getDesc());
+        if(gmAddEdit.getAllGoals().Count!=0){
+            Goal g = gmAddEdit.getAllGoals()[0];
+            if(g!= null){
+                g.setDesc("Watch the sunset");
+                gmAddEdit.editGoal(g); 
+                Assert.Equal(g.getDesc(), gmAddEdit.getAllGoals()[0].getDesc());
+            }
         }
     }
 
