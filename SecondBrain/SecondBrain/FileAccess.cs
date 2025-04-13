@@ -70,13 +70,17 @@ public class FileAccess{
 
     public void editFile(string newText, int line_to_edit){
         List<string> arrLine = new List<String>(File.ReadAllLines(this.fileName));
-        for(int index = 0; index<arrLine.Count; index++){
-            if(string.IsNullOrWhiteSpace(arrLine[index])){
-                arrLine.Remove(arrLine[index]);
+        int countRemoved = 0; 
+        if(arrLine.Count!=0){
+            for(int index = 0; index<arrLine.Count; index++){
+                if(string.IsNullOrWhiteSpace(arrLine[index])){
+                    arrLine.Remove(arrLine[index]);
+                    countRemoved++; 
+                }
             }
-        }
-        arrLine[line_to_edit] = newText;
+        arrLine[line_to_edit-countRemoved] = newText;
         File.WriteAllLines(this.fileName, arrLine);
+        }
     }
 
     public int getLastLineNumber(){

@@ -14,11 +14,13 @@ public class GoalManager{
         return allGoals; 
     }
 
+    //unit test complete
     public void addGoal(Goal g){
         allGoals.Add(g); 
         fm.publish(this.goalDataCSV(g));
     }
 
+    //unit test complete
     public string goalDataCSV(Goal g){
         String s = g.getDesc()+",";
         if(g.getCompleted()){
@@ -32,6 +34,7 @@ public class GoalManager{
     }
 
 
+    //unit test complete
     public List<String> getAllGoalDescs(){
         List<String> allDescs = new List<String>(); 
         foreach(Goal g in allGoals){
