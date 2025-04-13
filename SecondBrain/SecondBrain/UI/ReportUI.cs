@@ -16,6 +16,7 @@ public class ReportUI{
     }
 
     public void start(){
+        Console.Clear(); 
         this.summarize(); 
          var reportOption = AnsiConsole.Prompt(
             new SelectionPrompt<string>()

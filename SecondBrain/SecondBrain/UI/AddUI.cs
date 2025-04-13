@@ -8,6 +8,7 @@ public class AddUI{
 
     public AddUI(DataManager dm){
         this.dm = dm; 
+        Console.Clear(); 
         this.start(); 
     }
 
@@ -68,7 +69,10 @@ public class AddUI{
             .PageSize(10)
             .AddChoices("Book", "Article", "Back to Home"));
 
-
+        if(string.Equals(sourceType, "Back to Home")){
+            Console.Clear(); 
+            return; 
+        }
         //The Author, title and notes are stored here now
         Console.WriteLine("Enter Title Name:");
         String title = Console.ReadLine();
