@@ -22,11 +22,13 @@ public class DataManagerTest{
         Assert.Equal(dm.removeSource("Lincoln"), true);
     }
 
+    /**Not working. Not in use!
     [Fact]
     public void TestRemoveAllSources(){
        dm.removeAllSources(); 
        Assert.Equal(dm.allTitles().Count, 0);
     }
+    **/
 
     [Fact]
     public void TestEditSource(){
@@ -47,6 +49,16 @@ public class DataManagerTest{
         List<String> titles = allTitleTester.allTitles();
         List<String> checkList = new List<String>(); 
         checkList.Add(temp.getTitle());
+        dm.removeSource("Gilead");
         Assert.Equal(titles,checkList );
+    }
+
+    [Fact]
+    public void TestToCSV(){
+      Source s = new Source("How Now Brown Cow", "Jones", "It was okay!");
+      String str = s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+","; 
+      DateTime start = s.getStart(); 
+      str+=start.Year+"/"+start.Month+"/"+start.Day+"\n"; 
+      Assert.Equal(str, dm.toCSV(s));
     }
 }

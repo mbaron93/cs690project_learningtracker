@@ -14,11 +14,17 @@ public class GoalManager{
         return allGoals; 
     }
 
+    //Unit Test Written
     public void addGoal(Goal g){
         allGoals.Add(g); 
         fm.publish(this.goalDataCSV(g));
     }
 
+    public Goal returnGoal(int index){
+        return allGoals[index];
+    }
+
+    //unit test complete
     public string goalDataCSV(Goal g){
         String s = g.getDesc()+",";
         if(g.getCompleted()){
@@ -32,6 +38,7 @@ public class GoalManager{
     }
 
 
+    //unit test complete
     public List<String> getAllGoalDescs(){
         List<String> allDescs = new List<String>(); 
         foreach(Goal g in allGoals){
@@ -40,6 +47,7 @@ public class GoalManager{
         return allDescs; 
     }
 
+    //Unit Test Complete
     public List<Goal> incompleteGoals(){
         List<Goal> allDescs = new List<Goal>(); 
         foreach(Goal g in allGoals){
@@ -50,6 +58,7 @@ public class GoalManager{
         return allDescs; 
     }
 
+    //Unit Test Written
     public void editGoal(Goal given){
         for(int i = 0; i<allGoals.Count; i++){
             Goal g = allGoals[i];
@@ -61,6 +70,7 @@ public class GoalManager{
     }
     
     //Goal analysis data to be fed to Report UI phase
+    //Unit Test Complete
     public double fractionGoalsComplete(){
         double count = 0; 
         foreach(Goal g in allGoals){

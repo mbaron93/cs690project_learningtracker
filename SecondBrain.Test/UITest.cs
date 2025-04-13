@@ -4,9 +4,10 @@ public class UITest{
     UI ui; 
     string[] options = new String[] {"Add a source", "Edit a source", "Set a Goal", "View Learning Data", "Exit"};
     DataManager dm = new DataManager(); 
+    GoalManager gm = new GoalManager("TestUIGoal.csv"); 
 
     public UITest( ){
-        ui = new UI(options, dm);
+        ui = new UI(options, dm, gm);
     }
 
     [Fact]

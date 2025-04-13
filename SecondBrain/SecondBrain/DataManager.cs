@@ -29,6 +29,7 @@ public class DataManager{
         return goalNumSources; 
     }
 
+    //unit test written
     public string toCSV(Source s){
       String str = s.getAuthor()+","+s.getTitle()+","+s.getNotes()+","+s.getAmount()+","; 
       DateTime start = s.getStart(); 
@@ -80,12 +81,14 @@ public class DataManager{
         
     }
 
+    //Test does not work. Not in use! Only used in DataManager testAllTitles. Do not use!
     public void removeAllSources(){
          for(int i = 0; i<allSources.Count; i++){
             fileaccess.editFile("\n",i);
          }
          allSources = new List<Source>(); 
     }
+
 
     //unit test written
     public void editSource(Source given){
