@@ -28,6 +28,10 @@ public string getDesc(){
     return goalDesc; 
 }
 
+public void setDesc(string s){
+    goalDesc = s; 
+}
+
 public bool getCompleted(){
     return completed; 
 }

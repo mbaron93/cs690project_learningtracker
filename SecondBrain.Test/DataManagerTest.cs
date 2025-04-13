@@ -50,6 +50,7 @@ public class DataManagerTest{
         List<String> checkList = new List<String>(); 
         checkList.Add(temp.getTitle());
         Assert.Equal(titles,checkList );
+        dm.removeSource("Gilead");
     }
 
     [Fact]

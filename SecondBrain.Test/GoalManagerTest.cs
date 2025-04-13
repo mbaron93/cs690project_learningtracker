@@ -16,7 +16,14 @@ public class GoalManagerTest{
         Assert.Equal(gm.getAllGoals().Count, 3);
     }
 
-    //addGoal
+    //addGoal - uses add edit to avoid using the pre-existing CSV for other file system
+    [Fact]
+    public void TestAddGoal(){
+        Goal g = new Goal("Climb Mt. Everest", new DateTime(2025, 1, 1));
+        gmAddEdit.addGoal(g);
+        Goal returned = gmAddEdit.returnGoal(gmAddEdit.getAllGoals().Count-1);
+        Assert.Equal(g.getDesc(), returned.getDesc());
+    }
 
 
     //toCSV Test
@@ -59,6 +66,18 @@ public class GoalManagerTest{
     }
 
     //editGoal
+    [Fact]
+    public void TestEditGoal(){
+        Goal g = gmAddEdit.getAllGoals()[0];
+        if(g!= null){
+            g.setDesc("Watch the sunset");
+            gmAddEdit.editGoal(g); 
+            Assert.Equal(g.getDesc(), gmAddEdit.getAllGoals()[0].getDesc());
+        }
+    }
 
     //fractionGoalsComplete
+    public void TestFractionGoalsComplete(){
+        Assert.Equal(gm.fractionGoalsComplete(), 1.0/3);
+    }
 }
